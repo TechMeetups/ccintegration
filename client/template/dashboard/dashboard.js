@@ -1,7 +1,28 @@
 
 Template.dashboard.helpers({
   cc_contects : function(){
-    return contacts.find({user_id:Meteor.userId()});
+   var contacts_data =  contacts.find({user_id:Meteor.userId()}).fetch();
+   unique_data =  _.uniq(contacts_data, false, function(d) {return d.email});
+  return unique_data
+
+  // unique_data = []
+  // var sorted_arr = contacts_data.sort(function(b,a){
+  //   var keyA = a.email ;
+  //     var keyB = b.email;
+  //   if(keyA < keyB)
+  //       return -1;
+  //   if(keyA > keyB)
+  //     return 1;
+  //   return 0;
+  //   }) ; // You can define the comparing function here.
+  //                            // JS by default uses a crappy string compare.
+  //
+  //   for (var i = 0; i < contacts_data.length - 1; i++) {
+  //       if (sorted_arr[i + 1].email == sorted_arr[i].email) {
+  //         unique_data.push(sorted_arr[i]);
+  //       }
+  //   }
+  //  return unique_data;
   },
   provider_label : function(provider_label){
     if(provider_label && provider_label == "freeagent"){
