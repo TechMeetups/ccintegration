@@ -19,7 +19,14 @@
     </div>
     <div class="item item-body">
       <p>emails : {{email}}</p>
-      <p>address : {{addresses[0].line1}},{{addresses[0].line2}},{{addresses[0].line3}},{{addresses[0].postal_code}},{{addresses[0].city}}.</p>
+      <p>address : {{#with addresses 0}}
+                      {{line1}},
+                      {{line2}},
+                      {{line3}},
+                      {{postal_code}},
+                      {{city}}
+                  {{/with}}
+                </p>
       <p>phone : {{cell_phone}}/{{home_phone}}</p>
       <p>status : {{status}}</p>
       {{{activeLabel}}}
