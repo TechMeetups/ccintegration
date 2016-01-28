@@ -19,15 +19,16 @@
     </div>
     <div class="item item-body">
       <p>emails : {{email}}</p>
-      <p>address : {{#with addresses 0}}
-                      {{line1}},
-                      {{line2}},
-                      {{line3}},
-                      {{postal_code}},
-                      {{city}}
-                  {{/with}}
+      <p>address :{{#each addresses}}
+                        {{line1}},
+                        {{line2}},
+                        {{line3}},
+                        {{postal_code}},
+                        {{city}}
+                    {{/each}}
+
                 </p>
-      <p>phone : {{cell_phone}}/{{home_phone}}</p>
+      <p>phone : {{cell_phone}} / {{home_phone}}</p>
       <p>status : {{status}}</p>
       {{{activeLabel}}}
     </div>
